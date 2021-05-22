@@ -16,12 +16,9 @@ class GildedRose {
         }
     }
 
-    /**
-     * @param $item
-     */
     public function updateItem($item): void
     {
-        if ($item->name != 'Aged Brie' and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
+        if ($this->isAgedBrie($item) and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
             if ($item->quality > 0) {
                 if ($item->name != 'Sulfuras, Hand of Ragnaros') {
                     $item->quality = $item->quality - 1;
@@ -50,7 +47,7 @@ class GildedRose {
         }
 
         if ($item->sell_in < 0) {
-            if ($item->name != 'Aged Brie') {
+            if ($this->isAgedBrie($item)) {
                 if ($item->name != 'Backstage passes to a TAFKAL80ETC concert') {
                     if ($item->quality > 0) {
                         if ($item->name != 'Sulfuras, Hand of Ragnaros') {
@@ -66,5 +63,11 @@ class GildedRose {
                 }
             }
         }
+    }
+
+
+    private function isAgedBrie($item): bool
+    {
+        return $item->name != 'Aged Brie';
     }
 }
