@@ -26,7 +26,7 @@ class GildedRose
             if ($item->sell_in <= 0) {
                 $this->increaseItemQuality($item);
             }
-            $item->sell_in = $item->sell_in - 1;
+            $this->decreaseItemSellIn($item);
         } elseif ($this->isBackstagePasses($item)) {
             $this->increaseItemQuality($item);
             if ($item->sell_in <= 10) {
@@ -38,7 +38,7 @@ class GildedRose
             if ($item->sell_in <= 0) {
                 $item->quality = 0;
             }
-            $item->sell_in = $item->sell_in - 1;
+            $this->decreaseItemSellIn($item);
         } elseif ($this->isSulfuras($item)) {
 
         } else {
@@ -46,7 +46,7 @@ class GildedRose
             if ($item->sell_in <= 0) {
                 $this->decreaseItemQuality($item);
             }
-            $item->sell_in = $item->sell_in - 1;
+            $this->decreaseItemSellIn($item);
         }
     }
 
@@ -81,5 +81,13 @@ class GildedRose
         if ($item->quality < 50) {
             $item->quality = $item->quality + 1;
         }
+    }
+
+    /**
+     * @param Item $item
+     */
+    private function decreaseItemSellIn(Item $item): void
+    {
+        $item->sell_in = $item->sell_in - 1;
     }
 }
