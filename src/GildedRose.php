@@ -58,15 +58,12 @@ class GildedRose
                 if ($item->quality < 50) {
                     $item->quality = $item->quality + 1;
                 }
+            } elseif ($this->isBackstagePasses($item)) {
+                $item->quality = 0;
+            } elseif ($this->isSulfuras($item)) {
             } else {
-                if ($this->isBackstagePasses($item)) {
-                    $item->quality = 0;
-                } else {
-                    if (!$this->isSulfuras($item)) {
-                        if ($item->quality > 0) {
-                            $item->quality = $item->quality - 1;
-                        }
-                    }
+                if ($item->quality > 0) {
+                    $item->quality = $item->quality - 1;
                 }
             }
         }
