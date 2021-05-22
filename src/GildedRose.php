@@ -16,7 +16,7 @@ class GildedRose {
         }
     }
 
-    public function updateItem($item): void
+    public function updateItem(Item $item): void
     {
         if ($this->isAgedBrie($item) and $item->name != 'Backstage passes to a TAFKAL80ETC concert') {
             if ($item->quality > 0) {
@@ -66,7 +66,7 @@ class GildedRose {
     }
 
 
-    private function isAgedBrie($item): bool
+    private function isAgedBrie(Item $item): bool
     {
         return $item->name != 'Aged Brie';
     }
