@@ -26,6 +26,7 @@ class GildedRose
             if ($item->sell_in <= 0) {
                 $this->increaseItemQuality($item);
             }
+            $item->sell_in = $item->sell_in - 1;
         } elseif ($this->isBackstagePasses($item)) {
             $this->increaseItemQuality($item);
             if ($item->sell_in <= 10) {
@@ -37,6 +38,7 @@ class GildedRose
             if ($item->sell_in <= 0) {
                 $item->quality = 0;
             }
+            $item->sell_in = $item->sell_in - 1;
         } elseif ($this->isSulfuras($item)) {
 
         } else {
@@ -44,9 +46,6 @@ class GildedRose
             if ($item->sell_in <= 0) {
                 $this->decreaseItemQuality($item);
             }
-        }
-
-        if (!$this->isSulfuras($item)) {
             $item->sell_in = $item->sell_in - 1;
         }
     }
