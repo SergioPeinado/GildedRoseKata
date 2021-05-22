@@ -22,31 +22,13 @@ class GildedRose
     public function updateItem(Item $item): void
     {
         if ($this->isAgedBrie($item)) {
-            $this->increaseItemQuality($item);
-            if ($item->sell_in <= 0) {
-                $this->increaseItemQuality($item);
-            }
-            $this->decreaseItemSellIn($item);
+            $this->updateAgedBrieItem($item);
         } elseif ($this->isBackstagePasses($item)) {
-            $this->increaseItemQuality($item);
-            if ($item->sell_in <= 10) {
-                $this->increaseItemQuality($item);
-            }
-            if ($item->sell_in <= 5) {
-                $this->increaseItemQuality($item);
-            }
-            if ($item->sell_in <= 0) {
-                $item->quality = 0;
-            }
-            $this->decreaseItemSellIn($item);
+            $this->updateBackstagePassesItem($item);
         } elseif ($this->isSulfuras($item)) {
 
         } else {
-            $this->decreaseItemQuality($item);
-            if ($item->sell_in <= 0) {
-                $this->decreaseItemQuality($item);
-            }
-            $this->decreaseItemSellIn($item);
+            $this->updateNormalItem($item);
         }
     }
 
@@ -89,5 +71,47 @@ class GildedRose
     private function decreaseItemSellIn(Item $item): void
     {
         $item->sell_in = $item->sell_in - 1;
+    }
+
+    /**
+     * @param Item $item
+     */
+    private function updateAgedBrieItem(Item $item): void
+    {
+        $this->increaseItemQuality($item);
+        if ($item->sell_in <= 0) {
+            $this->increaseItemQuality($item);
+        }
+        $this->decreaseItemSellIn($item);
+    }
+
+    /**
+     * @param Item $item
+     */
+    private function updateBackstagePassesItem(Item $item): void
+    {
+        $this->increaseItemQuality($item);
+        if ($item->sell_in <= 10) {
+            $this->increaseItemQuality($item);
+        }
+        if ($item->sell_in <= 5) {
+            $this->increaseItemQuality($item);
+        }
+        if ($item->sell_in <= 0) {
+            $item->quality = 0;
+        }
+        $this->decreaseItemSellIn($item);
+    }
+
+    /**
+     * @param Item $item
+     */
+    private function updateNormalItem(Item $item): void
+    {
+        $this->decreaseItemQuality($item);
+        if ($item->sell_in <= 0) {
+            $this->decreaseItemQuality($item);
+        }
+        $this->decreaseItemSellIn($item);
     }
 }
