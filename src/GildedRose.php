@@ -22,22 +22,14 @@ class GildedRose
     public function updateItem(Item $item): void
     {
         if ($this->isAgedBrie($item)) {
-            if ($item->quality < 50) {
-                $item->quality = $item->quality + 1;
-            }
+            $this->increaseItemQuality($item);
         } elseif ($this->isBackstagePasses($item)) {
-            if ($item->quality < 50) {
-                $item->quality = $item->quality + 1;
-            }
+            $this->increaseItemQuality($item);
             if ($item->sell_in < 11) {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
-                }
+                $this->increaseItemQuality($item);
             }
             if ($item->sell_in < 6) {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
-                }
+                $this->increaseItemQuality($item);
             }
 
         } elseif ($this->isSulfuras($item)) {
@@ -52,9 +44,7 @@ class GildedRose
 
         if ($item->sell_in < 0) {
             if ($this->isAgedBrie($item)) {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
-                }
+                $this->increaseItemQuality($item);
             } elseif ($this->isBackstagePasses($item)) {
                 $item->quality = 0;
             } elseif ($this->isSulfuras($item)) {
@@ -70,23 +60,30 @@ class GildedRose
         return $item->name === 'Aged Brie';
     }
 
+
     private function isBackstagePasses(Item $item): bool
     {
         return $item->name === 'Backstage passes to a TAFKAL80ETC concert';
     }
+
 
     private function isSulfuras(Item $item): bool
     {
         return $item->name === 'Sulfuras, Hand of Ragnaros';
     }
 
-    /**
-     * @param Item $item
-     */
+
     private function decreaseItemQuality(Item $item): void
     {
         if ($item->quality > 0) {
             $item->quality = $item->quality - 1;
+        }
+    }
+
+    private function increaseItemQuality(Item $item): void
+    {
+        if ($item->quality < 50) {
+            $item->quality = $item->quality + 1;
         }
     }
 }
