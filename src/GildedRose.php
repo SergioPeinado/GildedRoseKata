@@ -41,8 +41,10 @@ class GildedRose
                     }
                 }
             }
+        } elseif ($this->isSulfuras($item)) {
+
         } else {
-            if ($item->quality > 0 && $this->isSulfuras($item)) {
+            if ($item->quality > 0) {
                 $item->quality = $item->quality - 1;
             }
         }
