@@ -4,9 +4,9 @@ namespace Runroom\GildedRose;
 
 class GildedRose {
 
-    private $items;
+    private array $items;
 
-    function __construct($items) {
+    function __construct(array $items) {
         $this->items = $items;
     }
 
