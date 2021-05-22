@@ -2,15 +2,18 @@
 
 namespace Runroom\GildedRose;
 
-class GildedRose {
+class GildedRose
+{
 
     private array $items;
 
-    function __construct(array $items) {
+    function __construct(array $items)
+    {
         $this->items = $items;
     }
 
-    function updateQuality() {
+    function updateQuality()
+    {
         foreach ($this->items as $item) {
             $this->updateItem($item);
         }
@@ -21,7 +24,6 @@ class GildedRose {
         if (!$this->isAgedBrie($item)) {
             if ($item->quality < 50) {
                 $item->quality = $item->quality + 1;
-
             }
         } elseif (!$this->isBackstagePasses($item)) {
             if ($item->quality < 50) {
@@ -40,10 +42,8 @@ class GildedRose {
                 }
             }
         } else {
-            if ($item->quality > 0) {
-                if ($this->isSulfuras($item)) {
-                    $item->quality = $item->quality - 1;
-                }
+            if ($item->quality > 0 && $this->isSulfuras($item)) {
+                $item->quality = $item->quality - 1;
             }
         }
 
