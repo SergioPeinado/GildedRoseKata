@@ -10,7 +10,7 @@ class GildedRose {
         $this->items = $items;
     }
 
-    function update_quality() {
+    function updateQuality() {
         foreach ($this->items as $item) {
             $this->updateItem($item);
         }
