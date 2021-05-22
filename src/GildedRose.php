@@ -43,9 +43,7 @@ class GildedRose
         } elseif ($this->isSulfuras($item)) {
 
         } else {
-            if ($item->quality > 0) {
-                $item->quality = $item->quality - 1;
-            }
+            $this->decreaseItemQuality($item);
         }
 
         if (!$this->isSulfuras($item)) {
@@ -61,9 +59,7 @@ class GildedRose
                 $item->quality = 0;
             } elseif ($this->isSulfuras($item)) {
             } else {
-                if ($item->quality > 0) {
-                    $item->quality = $item->quality - 1;
-                }
+                $this->decreaseItemQuality($item);
             }
         }
     }
@@ -82,5 +78,15 @@ class GildedRose
     private function isSulfuras(Item $item): bool
     {
         return $item->name === 'Sulfuras, Hand of Ragnaros';
+    }
+
+    /**
+     * @param Item $item
+     */
+    private function decreaseItemQuality(Item $item): void
+    {
+        if ($item->quality > 0) {
+            $item->quality = $item->quality - 1;
+        }
     }
 }
