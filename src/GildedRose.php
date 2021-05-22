@@ -54,19 +54,19 @@ class GildedRose
         }
 
         if ($item->sell_in < 0) {
-            if (!$this->isAgedBrie($item)) {
-                if (!$this->isBackstagePasses($item)) {
-                    if ($item->quality > 0) {
-                        if (!$this->isSulfuras($item)) {
+            if ($this->isAgedBrie($item)) {
+                if ($item->quality < 50) {
+                    $item->quality = $item->quality + 1;
+                }
+            } else {
+                if ($this->isBackstagePasses($item)) {
+                    $item->quality = 0;
+                } else {
+                    if (!$this->isSulfuras($item)) {
+                        if ($item->quality > 0) {
                             $item->quality = $item->quality - 1;
                         }
                     }
-                } else {
-                    $item->quality = 0;
-                }
-            } else {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
                 }
             }
         }
