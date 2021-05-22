@@ -28,16 +28,14 @@ class GildedRose
         } elseif ($this->isBackstagePasses($item)) {
             if ($item->quality < 50) {
                 $item->quality = $item->quality + 1;
-                if ($this->isBackstagePasses($item)) {
-                    if ($item->sell_in < 11) {
-                        if ($item->quality < 50) {
-                            $item->quality = $item->quality + 1;
-                        }
+                if ($item->sell_in < 11) {
+                    if ($item->quality < 50) {
+                        $item->quality = $item->quality + 1;
                     }
-                    if ($item->sell_in < 6) {
-                        if ($item->quality < 50) {
-                            $item->quality = $item->quality + 1;
-                        }
+                }
+                if ($item->sell_in < 6) {
+                    if ($item->quality < 50) {
+                        $item->quality = $item->quality + 1;
                     }
                 }
             }
