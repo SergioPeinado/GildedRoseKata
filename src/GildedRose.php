@@ -21,14 +21,14 @@ class GildedRose
 
     public function updateItem(Item $item): void
     {
-        if (!$this->isAgedBrie($item)) {
+        if ($this->isAgedBrie($item)) {
             if ($item->quality < 50) {
                 $item->quality = $item->quality + 1;
             }
-        } elseif (!$this->isBackstagePasses($item)) {
+        } elseif ($this->isBackstagePasses($item)) {
             if ($item->quality < 50) {
                 $item->quality = $item->quality + 1;
-                if (!$this->isBackstagePasses($item)) {
+                if ($this->isBackstagePasses($item)) {
                     if ($item->sell_in < 11) {
                         if ($item->quality < 50) {
                             $item->quality = $item->quality + 1;
@@ -49,15 +49,15 @@ class GildedRose
             }
         }
 
-        if ($this->isSulfuras($item)) {
+        if (!$this->isSulfuras($item)) {
             $item->sell_in = $item->sell_in - 1;
         }
 
         if ($item->sell_in < 0) {
-            if ($this->isAgedBrie($item)) {
-                if ($this->isBackstagePasses($item)) {
+            if (!$this->isAgedBrie($item)) {
+                if (!$this->isBackstagePasses($item)) {
                     if ($item->quality > 0) {
-                        if ($this->isSulfuras($item)) {
+                        if (!$this->isSulfuras($item)) {
                             $item->quality = $item->quality - 1;
                         }
                     }
@@ -75,16 +75,16 @@ class GildedRose
 
     private function isAgedBrie(Item $item): bool
     {
-        return $item->name != 'Aged Brie';
+        return $item->name === 'Aged Brie';
     }
 
     private function isBackstagePasses(Item $item): bool
     {
-        return $item->name != 'Backstage passes to a TAFKAL80ETC concert';
+        return $item->name === 'Backstage passes to a TAFKAL80ETC concert';
     }
 
     private function isSulfuras(Item $item): bool
     {
-        return $item->name != 'Sulfuras, Hand of Ragnaros';
+        return $item->name === 'Sulfuras, Hand of Ragnaros';
     }
 }
