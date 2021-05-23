@@ -21,6 +21,19 @@ class GildedRose
 
     private function updateItem(Item $item): void
     {
+        switch ($item) {
+            case 'Aged Brie':
+                $this->updateAgedBrieItem($item);
+                break;
+            case 'Backstage passes to a TAFKAL80ETC concert':
+                $this->updateBackstagePassesItem($item);
+                break;
+            case 'Sulfuras, Hand of Ragnaros':
+                break;
+            default:
+                $this->updateNormalItem($item);
+        }
+
         if ($this->isAgedBrie($item)) {
             $this->updateAgedBrieItem($item);
         } elseif ($this->isBackstagePasses($item)) {
