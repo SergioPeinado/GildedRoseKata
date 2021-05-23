@@ -10,8 +10,8 @@
         "phpunit/phpunit": "^9.2",
         "phpstan/phpstan": "^0.12",
         "phpstan/phpstan-phpunit": "^0.12",
-        "psalm/plugin-phpunit": "^0.10",
-        "vimeo/psalm": "^3.13"
+        "psalm/plugin-phpunit": "^0.15",
+        "vimeo/psalm": "^4.1"
     },
     "authors": [
         {
