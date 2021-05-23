@@ -43,7 +43,7 @@ class GildedRose
     private function updateAgedBrieItem(Item $item): void
     {
         $this->increaseItemQuality($item);
-        if ($item->sell_in <= 0) {
+        if ($item->sellIn <= 0) {
             $this->increaseItemQuality($item);
         }
         $this->decreaseItemSellIn($item);
@@ -53,13 +53,13 @@ class GildedRose
     private function updateBackstagePassesItem(Item $item): void
     {
         $this->increaseItemQuality($item);
-        if ($item->sell_in <= 10) {
+        if ($item->sellIn <= 10) {
             $this->increaseItemQuality($item);
         }
-        if ($item->sell_in <= 5) {
+        if ($item->sellIn <= 5) {
             $this->increaseItemQuality($item);
         }
-        if ($item->sell_in <= 0) {
+        if ($item->sellIn <= 0) {
             $item->quality = 0;
         }
         $this->decreaseItemSellIn($item);
@@ -69,7 +69,7 @@ class GildedRose
     private function updateNormalItem(Item $item): void
     {
         $this->decreaseItemQuality($item);
-        if ($item->sell_in <= 0) {
+        if ($item->sellIn <= 0) {
             $this->decreaseItemQuality($item);
         }
         $this->decreaseItemSellIn($item);
@@ -94,6 +94,6 @@ class GildedRose
 
     private function decreaseItemSellIn(Item $item): void
     {
-        $item->sell_in = $item->sell_in - 1;
+        $item->sellIn = $item->sellIn - 1;
     }
 }
