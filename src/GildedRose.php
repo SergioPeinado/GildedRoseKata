@@ -21,7 +21,7 @@ class GildedRose
 
     private function updateItem(Item $item): void
     {
-        switch ($item) {
+        switch ($item->name) {
             case 'Aged Brie':
                 $this->updateAgedBrieItem($item);
                 break;
