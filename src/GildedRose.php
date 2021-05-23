@@ -4,14 +4,13 @@ namespace Runroom\GildedRose;
 
 class GildedRose
 {
-
     const AGED_BRIE = 'Aged Brie';
     const BACKSTAGE_PASSES = 'Backstage passes to a TAFKAL80ETC concert';
     const SULFURAS = 'Sulfuras, Hand of Ragnaros';
 
     private array $items;
 
-    function __construct(array $items)
+    public function __construct(array $items)
     {
         $this->items = $items;
     }

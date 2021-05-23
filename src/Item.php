@@ -4,12 +4,11 @@ namespace Runroom\GildedRose;
 
 class Item
 {
-
     public string $name;
     public int $sellIn;
     public int $quality;
 
-    function __construct(string $name, int $sellIn, int $quality)
+    public function __construct(string $name, int $sellIn, int $quality)
     {
         $this->name = $name;
         $this->sellIn = $sellIn;
@@ -20,5 +19,4 @@ class Item
     {
         return "{$this->name}, {$this->sellIn}, {$this->quality}";
     }
-
 }
