@@ -19,7 +19,7 @@ class GildedRose
         }
     }
 
-    public function updateItem(Item $item): void
+    private function updateItem(Item $item): void
     {
         if ($this->isAgedBrie($item)) {
             $this->updateAgedBrieItem($item);
