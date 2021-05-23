@@ -33,16 +33,6 @@ class GildedRose
             default:
                 $this->updateNormalItem($item);
         }
-
-        if ($this->isAgedBrie($item)) {
-            $this->updateAgedBrieItem($item);
-        } elseif ($this->isBackstagePasses($item)) {
-            $this->updateBackstagePassesItem($item);
-        } elseif ($this->isSulfuras($item)) {
-
-        } else {
-            $this->updateNormalItem($item);
-        }
     }
 
 
