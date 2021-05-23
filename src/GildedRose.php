@@ -36,24 +36,6 @@ class GildedRose
     }
 
 
-    private function isAgedBrie(Item $item): bool
-    {
-        return $item->name === 'Aged Brie';
-    }
-
-
-    private function isBackstagePasses(Item $item): bool
-    {
-        return $item->name === 'Backstage passes to a TAFKAL80ETC concert';
-    }
-
-
-    private function isSulfuras(Item $item): bool
-    {
-        return $item->name === 'Sulfuras, Hand of Ragnaros';
-    }
-
-
     private function decreaseItemQuality(Item $item): void
     {
         if ($item->quality > 0) {
