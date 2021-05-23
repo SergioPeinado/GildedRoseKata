@@ -5,6 +5,10 @@ namespace Runroom\GildedRose;
 class GildedRose
 {
 
+    const AGED_BRIE = 'Aged Brie';
+    const BACKSTAGE_PASSES = 'Backstage passes to a TAFKAL80ETC concert';
+    const SULFURAS = 'Sulfuras, Hand of Ragnaros';
+
     private array $items;
 
     function __construct(array $items)
@@ -22,13 +26,13 @@ class GildedRose
     private function updateItem(Item $item): void
     {
         switch ($item->name) {
-            case 'Aged Brie':
+            case self::AGED_BRIE:
                 $this->updateAgedBrieItem($item);
                 break;
-            case 'Backstage passes to a TAFKAL80ETC concert':
+            case self::BACKSTAGE_PASSES:
                 $this->updateBackstagePassesItem($item);
                 break;
-            case 'Sulfuras, Hand of Ragnaros':
+            case self::SULFURAS:
                 break;
             default:
                 $this->updateNormalItem($item);
