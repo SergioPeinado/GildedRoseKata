@@ -58,6 +58,7 @@ class GildedRose
         }
     }
 
+
     private function increaseItemQuality(Item $item): void
     {
         if ($item->quality < 50) {
@@ -65,17 +66,13 @@ class GildedRose
         }
     }
 
-    /**
-     * @param Item $item
-     */
+
     private function decreaseItemSellIn(Item $item): void
     {
         $item->sell_in = $item->sell_in - 1;
     }
 
-    /**
-     * @param Item $item
-     */
+
     private function updateAgedBrieItem(Item $item): void
     {
         $this->increaseItemQuality($item);
@@ -85,9 +82,7 @@ class GildedRose
         $this->decreaseItemSellIn($item);
     }
 
-    /**
-     * @param Item $item
-     */
+
     private function updateBackstagePassesItem(Item $item): void
     {
         $this->increaseItemQuality($item);
@@ -103,9 +98,7 @@ class GildedRose
         $this->decreaseItemSellIn($item);
     }
 
-    /**
-     * @param Item $item
-     */
+
     private function updateNormalItem(Item $item): void
     {
         $this->decreaseItemQuality($item);
