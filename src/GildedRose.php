@@ -16,7 +16,7 @@ class GildedRose
         $this->items = $items;
     }
 
-    function updateQuality()
+    public function updateQuality(): void
     {
         foreach ($this->items as $item) {
             $this->updateItem($item);
@@ -37,28 +37,6 @@ class GildedRose
             default:
                 $this->updateNormalItem($item);
         }
-    }
-
-
-    private function decreaseItemQuality(Item $item): void
-    {
-        if ($item->quality > 0) {
-            $item->quality = $item->quality - 1;
-        }
-    }
-
-
-    private function increaseItemQuality(Item $item): void
-    {
-        if ($item->quality < 50) {
-            $item->quality = $item->quality + 1;
-        }
-    }
-
-
-    private function decreaseItemSellIn(Item $item): void
-    {
-        $item->sell_in = $item->sell_in - 1;
     }
 
 
@@ -95,5 +73,27 @@ class GildedRose
             $this->decreaseItemQuality($item);
         }
         $this->decreaseItemSellIn($item);
+    }
+
+
+    private function decreaseItemQuality(Item $item): void
+    {
+        if ($item->quality > 0) {
+            $item->quality = $item->quality - 1;
+        }
+    }
+
+
+    private function increaseItemQuality(Item $item): void
+    {
+        if ($item->quality < 50) {
+            $item->quality = $item->quality + 1;
+        }
+    }
+
+
+    private function decreaseItemSellIn(Item $item): void
+    {
+        $item->sell_in = $item->sell_in - 1;
     }
 }
